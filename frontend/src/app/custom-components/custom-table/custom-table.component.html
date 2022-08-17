@@ -1,0 +1,47 @@
+<mat-table [dataSource]="dataTable" class="mat-elevation-z8 tableMargin">
+
+  <ng-container *ngFor="let coluna of columns" [matColumnDef]="coluna.value">
+
+    <mat-header-cell mat-header-cell *matHeaderCellDef>{{ coluna.label }}</mat-header-cell>
+
+    <mat-cell class="table-row" mat-cell *matCellDef="let element"
+      [ngStyle]="{cursor: pointer ===true? 'pointer': 'default'}" (click)="clickRow(element)">
+
+      <span class="mobile-label">{{coluna.label}}:</span>
+
+      {{ value(element, coluna) }}
+    </mat-cell>
+
+  </ng-container>
+
+ <!--Coluna de ações dos botões-->
+  <ng-container *ngFor="let coluna of columnsAction" [matColumnDef]="coluna.action">
+
+    <mat-header-cell mat-header-cell *matHeaderCellDef class="title-col">
+      {{ coluna.labelColuna ? coluna.labelColuna : coluna.label }}
+    </mat-header-cell>
+
+    <mat-cell mat-cell *matCellDef="let element; let i = index" class="buttons-action table-row">
+      <button mat-button (click)="action(coluna.action, coluna.value, element, i)"
+        [ngStyle]="{cursor: pointerIcon === true ? 'pointer': 'default'}">
+        <mat-icon color="{{coluna.setColor ? coluna.setColor(element) : coluna.color}}"
+          [ngStyle]="{cursor: pointerIcon === true ? 'pointer': 'default'}">
+          {{coluna.label}}</mat-icon>
+      </button>
+    </mat-cell>
+
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" class="click"></mat-row>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="5">Não foi encontrado item na tabela.</td>
+  </tr>
+
+</mat-table>
+
+<mat-paginator class="mat-elevation-z8 tableMargin" *ngIf="showPagination" [length]="pageLength" [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
+</mat-paginator>

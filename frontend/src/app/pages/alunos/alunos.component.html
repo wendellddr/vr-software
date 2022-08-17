@@ -1,0 +1,28 @@
+<custom-header title="Alunos" subtitle="Estão cadastrados todos os alunos do sistema." labelButton="Cadastrar Aluno"
+  (clickButton)="openDialogAluno()" [downloadPdf]="true" (clickDownloadPdf)="downloadAlunoPdf()">
+</custom-header>
+
+
+<div class="row justify-content-center ">
+
+  <div class="col align-self-center">
+    <custom-input placeholder="Código" type="number" [control]="filters.get('codigo')">
+    </custom-input>
+  </div>
+
+  <div class="col align-self-center">
+    <custom-input placeholder="Nome" [control]="filters.get('nome')">
+    </custom-input>
+  </div>
+
+  <div class="col align-self-center">
+    <custom-input placeholder="Curso" [control]="filters.get('curso_descricao')">
+    </custom-input>
+  </div>
+
+</div>
+
+<custom-table [columns]="columns" [showPagination]="true" [pageLength]="pageLength" [dataTable]="dataSource"
+  (eventClickRow)="openDialogAluno($event)" (actionChangePage)="requestData($event)" [columnsAction]="columnsActTable"
+  (actionEvent)="deleteAluno($event)">
+</custom-table>

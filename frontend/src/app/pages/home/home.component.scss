@@ -1,0 +1,42 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logout-icon {
+  color: red;
+}
+
+.app-name {
+  cursor: pointer;
+}
+
+hr {
+  height: 3px;
+  border-width: 0;
+  color: gray;
+  background-color: gray;
+}
+
+.nav {
+  font-weight: bold;
+  color: black;
+}
+
+.nav:hover {
+  color: gray;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  .sideNav {
+    width: 10%;
+  }
+
+  .main {
+    height: 91.6vh;
+  }
+}
