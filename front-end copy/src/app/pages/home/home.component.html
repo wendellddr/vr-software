@@ -1,0 +1,30 @@
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="nav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-name" routerLink="home">VR Software Teste</h1>
+    <span class="spacer"></span>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav [opened]="true" class="sideNav" #nav [mode]=" 'side'">
+      <mat-list-item>
+        <hr style="margin-top:0.2px;">
+        <a mat-list-item [routerLink]="nav.value" *ngFor="let nav of navList">
+          <div class="nav justify-content-center">{{nav.name}}</div>
+          <hr>
+        </a>
+      </mat-list-item>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="main">
+      <div class="row justify-content-center m-0 p-0 mb-3">
+        <div class="col m-0">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
