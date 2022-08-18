@@ -2,6 +2,7 @@ import { HttpException, Injectable, Logger } from '@nestjs/common';
 import * as ejs from 'ejs';
 import * as puppeteer from 'puppeteer';
 import * as fs from 'fs';
+import { Readable, Writable } from 'stream';
 
 const optionsLaunch: any = {};
 
@@ -10,8 +11,8 @@ export class PdfService {
   async renderPdf(template: string, data: any) {
     const html = await ejs.render(template, { ...data }, { async: true });
 
-    const outputHTML = `/tmp/html-${data.id}.html`;
-    const outputPDF = `/tmp/pdf-${data.id}.pdf`;
+    const outputHTML = `/tmp/html-find-all.html`;
+    const outputPDF = `/tmp/pdf-find-all.pdf`;
 
     fs.writeFileSync(outputHTML, html);
 

@@ -52,7 +52,7 @@ export class CursoService {
   }
 
   getCursoPdf(findCursoDto: FindCursoDto) {
-    const pattern = { message: 'pdf_aluno' };
+    const pattern = { message: 'pdf_curso' };
     const payload = findCursoDto;
     return this.clientBackEnd
       .send<string>(pattern, payload)

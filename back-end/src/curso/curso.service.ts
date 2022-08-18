@@ -138,8 +138,8 @@ export class CursoService {
     return { success: true };
   }
 
-  async getCursoPdf(findAlunoDto: FindCursoDto) {
-    const { cursos } = await this.findAll(findAlunoDto);
+  async getCursoPdf(findCursoDto: FindCursoDto) {
+    const { cursos } = await this.findAll(findCursoDto);
 
     const template = fs.readFileSync(
       path.join(__dirname, '../../templates/curso.pdf.html'),
