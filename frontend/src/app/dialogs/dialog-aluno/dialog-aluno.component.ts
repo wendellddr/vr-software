@@ -51,11 +51,18 @@ export class DialogAlunoComponent implements OnInit {
       return;
     }
 
-    this._loadingControl.show();
-
     if (this.form.get('cursos_codigo')?.value[0] === 0) {
       this.form.get('cursos_codigo')?.value.shift();
     }
+
+    if (!this.form.get('cursos_codigo')?.value.length) {
+      this._matSnackBar.open('Selecione um curso valido', 'Fechar', {
+        duration: 3000,
+      });
+      return;
+    }
+
+    this._loadingControl.show();
 
     if (edit) {
       this._alunoService
